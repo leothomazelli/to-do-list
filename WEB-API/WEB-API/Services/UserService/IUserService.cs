@@ -8,34 +8,48 @@ namespace WEB_API.Services.UserService
         /// Create a new user based on the object received.
         /// </summary>
         /// <param name="user">The user who's going to be added by the object received.</param>
-        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
         ServiceResponse<User> Add(User user);
 
         /// <summary>
         /// Update/edit a user based on the object received.
         /// </summary>
         /// <param name="user">The user who's going to be edited by the object received.</param>
-        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
         ServiceResponse<User> Update(User user);
 
         /// <summary>
         /// Delete a user based on the id received.
         /// </summary>
         /// <param name="id">The user who's going to be deleted by the id received.</param>
-        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
         ServiceResponse<User> Delete(int id);
+
+        /// <summary>
+        /// Used to login into the application.
+        /// </summary>
+        /// <param name="userName">Property that contains the user's name</param>
+        /// <param name="password">Property that contains the user's password</param>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<User> Login(string userName, string password);
+
+        /// <summary>
+        /// Used to logout from the application
+        /// </summary>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<User> Logout();
 
         /// <summary>
         /// Get all users registered in the database.
         /// </summary>
-        /// <returns>return a serviceResponse with the result for the operation.</returns>
-        ServiceResponse<List<User>> GetAll();
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<IList<User>> GetAll();
 
         /// <summary>
         /// Get a user based on the id received.
         /// </summary>
         /// <param name="id">The user who's going to be returned by the id received.</param>
-        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
         ServiceResponse<User> GetUserById(int id);
     }
 }
