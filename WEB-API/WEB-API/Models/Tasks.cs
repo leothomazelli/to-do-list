@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using WEB_API.Enums;
 
 namespace WEB_API.Models
@@ -18,6 +19,7 @@ namespace WEB_API.Models
 
         public DateTime DueDate { get; set; }
 
+        [ForeignKey("User")]
         public int UserId { get; set; }
     }
 }
