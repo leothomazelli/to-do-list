@@ -4,26 +4,27 @@ namespace WEB_API.Services.TasksService
 {
     public class ITasksService : ITasksInterface
     {
-        public Task<List<TasksModel>> CreateTask(TasksModel newTask)
-        {
-            throw new NotImplementedException();
-        }
-        public Task<List<TasksModel>> UpdateTask(TasksModel editTask)
+        public async Task<ServiceResponseModel<List<TasksModel>>> CreateTask(TasksModel newTask)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TasksModel>> DeleteTaskById(int id)
+        public async Task<ServiceResponseModel<List<TasksModel>>> UpdateTask(TasksModel editTask)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<TasksModel>> GetTasks()
+        public Task<ServiceResponseModel<List<TasksModel>>> DeleteTaskById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TasksModel> GetTaskById(int id)
+        public Task<ServiceResponseModel<List<TasksModel>>> GetTasks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceResponseModel<TasksModel>> GetTaskById(int id)
         {
             throw new NotImplementedException();
         }
