@@ -2,48 +2,40 @@
 
 namespace WEB_API.Services.TasksService
 {
-    public class ITasksService : ITasksInterface
+    public interface ITasksService
     {
-        public async Task<ServiceResponse<List<Tasks>>> CreateTask(Tasks newTask)
-        {
-            ServiceResponse<List<Tasks>> serviceResponse = new ServiceResponse<List<Tasks>>();
-            try
-            {
-                if (newTask == null)
-                {
-                    serviceResponse.data = null;
-                    serviceResponse.message = "Informe os dados.";
-                    serviceResponse.success = false;
-                    return serviceResponse;
-                }
-            }
-            catch (Exception ex)
-            {
-                serviceResponse.data = null;
-                serviceResponse.message = ex.Message;
-                serviceResponse.success = false;
-            }
-            return serviceResponse;
-        }
+        /// <summary>
+        /// Create a new task based on the object received.
+        /// </summary>
+        /// <param name="task">The task object which is going to be added.</param>
+        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<Tasks> Add(Tasks task);
 
-        public async Task<ServiceResponse<List<Tasks>>> UpdateTask(Tasks editTask)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// Update/edit a task based on the object received.
+        /// </summary>
+        /// <param name="task">The task object which is going to be edited.</param>
+        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<Tasks> Update(Tasks task);
 
-        public Task<ServiceResponse<List<Tasks>>> DeleteTaskById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// Delete a task based on the id received.
+        /// </summary>
+        /// <param name="id">The id from the task that's being deleted.</param>
+        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<Tasks> Delete(int id);
 
-        public Task<ServiceResponse<List<Tasks>>> GetTasks()
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// Get all tasks registered in the database.
+        /// </summary>
+        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<List<Tasks>> GetAll();
 
-        public Task<ServiceResponse<Tasks>> GetTaskById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// Get a task based on the id received.
+        /// </summary>
+        /// <param name="id">The task which the id is going to return.</param>
+        /// <returns>return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<Tasks> GetTaskById(int id);
     }
 }

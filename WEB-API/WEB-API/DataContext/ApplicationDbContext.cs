@@ -1,8 +1,7 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using WEB_API.Models;
 
-namespace CRUD_DN6.DataContext
+namespace WEB_API.DataContext
 {
     public class ApplicationDbContext : DbContext
     {
