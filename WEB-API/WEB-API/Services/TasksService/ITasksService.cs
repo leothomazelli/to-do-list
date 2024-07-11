@@ -4,27 +4,44 @@ namespace WEB_API.Services.TasksService
 {
     public class ITasksService : ITasksInterface
     {
-        public async Task<ServiceResponseModel<List<TasksModel>>> CreateTask(TasksModel newTask)
+        public async Task<ServiceResponse<List<Tasks>>> CreateTask(Tasks newTask)
+        {
+            ServiceResponse<List<Tasks>> serviceResponse = new ServiceResponse<List<Tasks>>();
+            try
+            {
+                if (newTask == null)
+                {
+                    serviceResponse.data = null;
+                    serviceResponse.message = "Informe os dados.";
+                    serviceResponse.success = false;
+                    return serviceResponse;
+                }
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.data = null;
+                serviceResponse.message = ex.Message;
+                serviceResponse.success = false;
+            }
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<List<Tasks>>> UpdateTask(Tasks editTask)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResponseModel<List<TasksModel>>> UpdateTask(TasksModel editTask)
+        public Task<ServiceResponse<List<Tasks>>> DeleteTaskById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponseModel<List<TasksModel>>> DeleteTaskById(int id)
+        public Task<ServiceResponse<List<Tasks>>> GetTasks()
         {
             throw new NotImplementedException();
         }
 
-        public Task<ServiceResponseModel<List<TasksModel>>> GetTasks()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ServiceResponseModel<TasksModel>> GetTaskById(int id)
+        public Task<ServiceResponse<Tasks>> GetTaskById(int id)
         {
             throw new NotImplementedException();
         }

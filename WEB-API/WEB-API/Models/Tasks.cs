@@ -3,7 +3,7 @@ using WEB_API.Enums;
 
 namespace WEB_API.Models
 {
-    public class TasksModel
+    public class Tasks
     {
         [Key]
         public int Id { get; set; }
