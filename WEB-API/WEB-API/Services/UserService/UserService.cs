@@ -105,19 +105,6 @@ namespace WEB_API.Services.UserService
             return response;
         }
 
-        /// <inheritdoc />
-        public ServiceResponse<User> Login(string userName, string password)
-        {
-            var response = new ServiceResponse<User>();
-            throw new NotImplementedException();
-        }
-
-        /// <inheritdoc />
-        public ServiceResponse<User> Logout()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <inheritdoc />
         public ServiceResponse<IList<User>> GetAll()
         {
@@ -158,6 +145,19 @@ namespace WEB_API.Services.UserService
             }
 
             return response;
+        }
+
+        /// <inheritdoc />
+        public ServiceResponse<User> Login(string userName, string password)
+        {
+            var response = new ServiceResponse<User>();
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc />
+        public ServiceResponse<User> Logout()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion Public methods

@@ -26,6 +26,19 @@ namespace WEB_API.Services.UserService
         ServiceResponse<User> Delete(int id);
 
         /// <summary>
+        /// Get all users registered in the database.
+        /// </summary>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<IList<User>> GetAll();
+
+        /// <summary>
+        /// Get a user based on the id received.
+        /// </summary>
+        /// <param name="id">The user who's going to be returned by the id received.</param>
+        /// <returns>Return a serviceResponse with the result for the operation.</returns>
+        ServiceResponse<User> GetUserById(int id);
+
+        /// <summary>
         /// Used to login into the application.
         /// </summary>
         /// <param name="userName">Property that contains the user's name</param>
@@ -38,18 +51,5 @@ namespace WEB_API.Services.UserService
         /// </summary>
         /// <returns>Return a serviceResponse with the result for the operation.</returns>
         ServiceResponse<User> Logout();
-
-        /// <summary>
-        /// Get all users registered in the database.
-        /// </summary>
-        /// <returns>Return a serviceResponse with the result for the operation.</returns>
-        ServiceResponse<IList<User>> GetAll();
-
-        /// <summary>
-        /// Get a user based on the id received.
-        /// </summary>
-        /// <param name="id">The user who's going to be returned by the id received.</param>
-        /// <returns>Return a serviceResponse with the result for the operation.</returns>
-        ServiceResponse<User> GetUserById(int id);
     }
 }
