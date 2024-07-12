@@ -43,7 +43,7 @@ namespace WEB_API_Tests.Controllers
             var responseMock = new ServiceResponse<User>
             {
                 data = userMock,
-                message = "Usuário atualizado com sucesso",
+                message = "Usuário criado com sucesso.",
                 success = true
             };
             _service.Setup(_ => _.Add(It.IsAny<User>())).Returns(responseMock);
@@ -64,7 +64,7 @@ namespace WEB_API_Tests.Controllers
             var responseMock = new ServiceResponse<User>
             {
                 data = userMock,
-                message = "Usuário atualizado com sucesso",
+                message = "Usuário atualizado com sucesso.",
                 success = true
             };
             _service.Setup(_ => _.Update(It.IsAny<User>())).Returns(responseMock);
@@ -85,7 +85,7 @@ namespace WEB_API_Tests.Controllers
             var responseMock = new ServiceResponse<User>
             {
                 data = userMock,
-                message = "Usuário removido com sucesso",
+                message = "Usuário removido com sucesso.",
                 success = true
             };
             _service.Setup(_ => _.Delete(It.IsAny<int>())).Returns(responseMock);
@@ -105,7 +105,7 @@ namespace WEB_API_Tests.Controllers
             var responseMock = new ServiceResponse<IList<User>>
             {
                 data = _usersMock,
-                message = "Todos os usários encontrados foram retornados com sucesso.",
+                message = "Todos os usuários encontrados foram retornados com sucesso.",
                 success = true
             };
             _service.Setup(_ => _.GetAll()).Returns(responseMock);
