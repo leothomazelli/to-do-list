@@ -113,6 +113,7 @@ namespace WEB_API.Services.UserService
             try
             {
                 response.data = _repository.GetAll().ToList();
+                response.message = "Todos os usários encontrados foram retornados com sucesso.";
             }
             catch (Exception ex)
             {
