@@ -27,7 +27,6 @@ namespace WEB_API_Tests.Controllers
                     CreatedAt = DateTime.Now.ToLocalTime(),
                     DueDate = DateTime.Today.ToLocalTime(),
                     UserId = 1
-
                 },
                 new()
                 {
@@ -116,7 +115,7 @@ namespace WEB_API_Tests.Controllers
                 message = "Todas as tasks encontradas foram retornadas com sucesso.",
                 success = true
             };
-            _service.Setup(_ => _.GetAll());
+            _service.Setup(_ => _.GetAll()).Returns(responseMock);
 
             // Act
             var result = _controller.GetAll();
@@ -137,7 +136,7 @@ namespace WEB_API_Tests.Controllers
                 message = "Task localizada com sucesso.",
                 success = true
             };
-            _service.Setup(_ => _.GetTaskById(It.IsAny<int>()));
+            _service.Setup(_ => _.GetTaskById(It.IsAny<int>())).Returns(responseMock);
 
             // Act
             var result = _controller.GetTaskById(tasksMock.Id);

@@ -91,11 +91,11 @@ namespace WEB_API.Services.TasksService
 
                 if (response.data == null)
                 {
-                    throw new Exception("Task não foi encontrado.");
+                    throw new Exception("Task não foi encontrada.");
                 }
 
                 _repository.Remove(response.data);
-                response.message = "Task removido com sucesso.";
+                response.message = "Task removida com sucesso.";
             }
             catch (Exception ex)
             {
@@ -114,6 +114,7 @@ namespace WEB_API.Services.TasksService
             try
             {
                 response.data = _repository.GetAll().ToList();
+                response.message = "Todos os dados foram retornados.";
             }
             catch (Exception ex)
             {
@@ -131,12 +132,13 @@ namespace WEB_API.Services.TasksService
             try
             {
                 response.data = _repository.GetById(id);
-                response.message = "Task localizada com sucesso.";
 
                 if (response.data == null)
                 {
                     throw new Exception("Task não foi encontrada.");
                 }
+
+                response.message = "Task localizada com sucesso.";
             }
             catch (Exception ex)
             {
