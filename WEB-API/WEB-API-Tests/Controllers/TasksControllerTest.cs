@@ -23,7 +23,7 @@ namespace WEB_API_Tests.Controllers
                     Id = 1,
                     Title = "Mercado",
                     Summary = "Ir ao mercado fazer a compra do mês.",
-                    Status = WEB_API.Enums.StatusEnum.Started,
+                    Status = WEB_API.Enums.StatusEnum.Doing,
                     CreatedAt = DateTime.Now.ToLocalTime(),
                     DueDate = DateTime.Today.ToLocalTime(),
                     UserId = 1
@@ -33,7 +33,7 @@ namespace WEB_API_Tests.Controllers
                     Id = 2,
                     Title = "Buscar Jake",
                     Summary = "Não esquecer de buscar o Jake no futebol.",
-                    Status = WEB_API.Enums.StatusEnum.Paused,
+                    Status = WEB_API.Enums.StatusEnum.Done,
                     CreatedAt = DateTime.Now.ToLocalTime(),
                     DueDate = DateTime.Today.ToLocalTime(), 
                     UserId = 1

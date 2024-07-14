@@ -30,7 +30,7 @@ namespace WEB_API.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
+        [Route("Delete/{id}")]
         public ServiceResponse<Tasks> Delete(int id) 
         { 
             return _service.Delete(id);

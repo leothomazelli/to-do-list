@@ -1,0 +1,7 @@
+<app-to-do-form
+  *ngIf="taskData"
+  [btnAction]="btnAction"
+  [title]="title"
+  [taskData]="taskData"
+  (onSubmit)="editTask($event)"
+></app-to-do-form>

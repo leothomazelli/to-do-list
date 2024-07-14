@@ -1,0 +1,48 @@
+<mat-card-content class="container">
+  <mat-card class="card-login">
+    <mat-card-title>Login</mat-card-title>
+    <form [formGroup]="formLogin" novalidate>
+      <mat-card-content class="conteudo-login">
+        <mat-form-field appearance="outline" class="form-group">
+          <mat-label>User Name</mat-label>
+          <input
+            type="text"
+            matInput
+            class="form-control"
+            formControlName="userName"
+            placeholder="Ex. name@example.com"
+          />
+          <mat-error
+            *ngIf="
+              formLogin.get('userName')?.hasError('required') &&
+              formLogin.get('userName')?.touched
+            "
+          >
+            User name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-group">
+          <mat-label>Password</mat-label>
+          <input
+            class="form-control"
+            type="password"
+            matInput
+            formControlName="password"
+          />
+          <mat-error
+            *ngIf="
+              formLogin.get('password')?.invalid &&
+              formLogin.get('password')?.touched
+            "
+            >Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </form>
+    <mat-card-actions align="end">
+      <button class="btn btn-primary" align="end" (click)="login()">
+        Entrar
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</mat-card-content>

@@ -1,0 +1,81 @@
+<h1>{{ title }}</h1>
+
+<form [formGroup]="taskForm" (ngSubmit)="submit($event)" #formDit="ngForm">
+  <input type="hidden" formControlName="id" />
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input
+      class="form-control"
+      type="text"
+      formControlName="title"
+      placeholder="Title"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="summary">Summary:</label>
+    <textarea
+      class="form-control"
+      type="text"
+      formControlName="summary"
+      placeholder="Summary"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="status">Status</label>
+    <select class="form-select" id="status" formControlName="status" required>
+      <option value="0">To Do</option>
+      <option value="1">Doing</option>
+      <option value="2">Done</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="createdAt">Created At</label>
+    <input
+      class="form-control"
+      type="date"
+      formControlName="createdAt"
+      placeholder="Created At"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="dueDate">Due Date</label>
+    <input
+      class="form-control"
+      type="date"
+      formControlName="dueDate"
+      placeholder="Due Date"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="userId">User Id:</label>
+    <input
+      class="form-control"
+      type="text"
+      formControlName="userId"
+      placeholder="User Id"
+      required
+    />
+  </div>
+  <div class="btn-box text-end mt-2">
+    <button
+      class="btn btn-success ms-2"
+      type="submit"
+      [disabled]="!taskForm.valid"
+    >
+      {{ btnAction }}
+    </button>
+    <button class="btn btn-secondary ms-2" routerLink="">Cancel</button>
+    <button
+      *ngIf="taskData"
+      class="btn btn-danger ms-2"
+      type="button"
+      (click)="delete()"
+    >
+      Delete
+    </button>
+  </div>
+</form>

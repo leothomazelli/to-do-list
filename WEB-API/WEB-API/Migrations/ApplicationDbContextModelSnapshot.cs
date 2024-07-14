@@ -53,6 +53,28 @@ namespace WEB_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tasks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2024, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6807),
+                            DueDate = new DateTime(2025, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6807),
+                            Status = 1,
+                            Summary = "Ir ao futebol.",
+                            Title = "Futebol",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTime(2024, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6811),
+                            DueDate = new DateTime(2025, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6812),
+                            Status = 0,
+                            Summary = "Ir ao mercado.",
+                            Title = "Mercado",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("WEB_API.Models.User", b =>
@@ -78,6 +100,22 @@ namespace WEB_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "leonardothomazellif@gmail.com",
+                            Password = "123456",
+                            UserName = "Leonardo"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "geraneves@gmail.com",
+                            Password = "654321",
+                            UserName = "Geraldo"
+                        });
                 });
 #pragma warning restore 612, 618
         }

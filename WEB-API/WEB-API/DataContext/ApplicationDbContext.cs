@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WEB_API.DataContext.Extensions;
 using WEB_API.Models;
 
 namespace WEB_API.DataContext
@@ -13,5 +14,11 @@ namespace WEB_API.DataContext
         public DbSet<User> User { get; set; }
 
         public DbSet<Tasks> Tasks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyGlobalConfiguration();
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

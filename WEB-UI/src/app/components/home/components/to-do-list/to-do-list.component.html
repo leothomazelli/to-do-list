@@ -1,0 +1,72 @@
+<div class="container">
+  <h2>To do</h2>
+
+  <div
+    id="0"
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doingList, doneList]"
+    class="list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <button
+      class="box"
+      cdkDrag
+      *ngFor="let item of todo"
+      [routerLink]="['/edit', item.id]"
+    >
+      {{ item.title }}
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Doing</h2>
+
+  <div
+    id="1"
+    cdkDropList
+    #doingList="cdkDropList"
+    [cdkDropListData]="doing"
+    [cdkDropListConnectedTo]="[todoList, doneList]"
+    class="list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <button
+      class="box"
+      cdkDrag
+      *ngFor="let item of doing"
+      [routerLink]="['/edit', item.id]"
+    >
+      {{ item.title }}
+    </button>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Done</h2>
+
+  <div
+    id="2"
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[todoList, doingList]"
+    class="list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <button
+      class="box"
+      cdkDrag
+      *ngFor="let item of done"
+      [routerLink]="['/edit', item.id]"
+    >
+      {{ item.title }}
+    </button>
+  </div>
+</div>
+
+<div class="text-end">
+  <button class="btn btn-success mt-2" [routerLink]="['/add']">Novo</button>
+</div>
