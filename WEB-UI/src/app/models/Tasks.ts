@@ -1,4 +1,5 @@
 import { StatusEnum } from '../enum/StatusEnum';
+import { User } from './User';
 
 export interface Tasks {
   id: number;
@@ -8,4 +9,5 @@ export interface Tasks {
   createdAt: Date;
   dueDate: Date;
   userId: number;
+  user: User;
 }

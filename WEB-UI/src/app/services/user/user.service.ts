@@ -13,25 +13,27 @@ export class UserService {
 
   /**
    *
+   * @returns
+   */
+  getAll(): Observable<ServiceResponse<User[]>> {
+    return this.apiService.get('User', 'GetAll');
+  }
+
+  /**
+   *
    * @param user
    */
-  login(userName: string, password: string): Observable<ServiceResponse<User>> {
-    return this.apiService
-      .post({ userName: userName, password: password }, 'User', 'Login')
-      .pipe(
-        tap((response: ServiceResponse<User>) => {
-          if (!response.success) {
-            return;
-          }
+  login(user: User): Observable<ServiceResponse<User>> {
+    return this.apiService.post(this.normalizeData(user), 'User', 'Login').pipe(
+      tap((response: ServiceResponse<User>) => {
+        if (!response.success) {
+          return;
+        }
 
-          localStorage.setItem(
-            'token',
-            btoa(JSON.stringify(response.data.token))
-          );
-          localStorage.setItem('user', btoa(JSON.stringify(response.data)));
-          this.router.navigate(['']);
-        })
-      );
+        localStorage.setItem('user', btoa(JSON.stringify(response.data)));
+        this.router.navigate(['']);
+      })
+    );
   }
 
   /**
@@ -42,41 +44,22 @@ export class UserService {
     this.router.navigate(['login']);
   }
 
-  // /**
-  //  *
-  //  * @returns
-  //  */
-  // userLogged(): User {
-  //   return localStorage.getItem('usuario')
-  //     ? JSON.parse(atob(localStorage.getItem('user')))
-  //     : null;
-  // }
-
-  // /**
-  //  *
-  //  * @returns
-  //  */
-  // userIdLogged(): string {
-  //   return localStorage.getItem('usuario')
-  //     ? (JSON.parse(atob(localStorage.getItem('usuario'))) as IUsuario).id
-  //     : null;
-  // }
-
-  // /**
-  //  *
-  //  * @returns
-  //  */
-  // userToken(): string {
-  //   return localStorage.getItem('token')
-  //     ? JSON.parse(atob(localStorage.getItem('token')))
-  //     : null;
-  // }
-
   /**
    *
    * @returns
    */
   isLogged(): boolean {
-    return localStorage.getItem('token') ? true : false;
+    return localStorage.getItem('user') ? true : false;
+  }
+
+  /**
+   *
+   * @param data
+   * @returns
+   */
+  private normalizeData(data: User): User {
+    data.id = 0;
+    data.email = '';
+    return data;
   }
 }

@@ -3,8 +3,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StatusEnum } from 'src/app/enum/StatusEnum';
+import { ServiceResponse } from 'src/app/models/ServiceResponse';
 import { Tasks } from 'src/app/models/Tasks';
+import { User } from 'src/app/models/User';
 import { TasksService } from 'src/app/services/tasks/tasks.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-to-do-form',
@@ -17,14 +20,29 @@ export class ToDoFormComponent {
   @Input() title!: string;
   @Input() taskData: Tasks | null = null;
   taskForm!: FormGroup;
+  users: User[] = [];
 
   /**
    *
    */
-  constructor(private tasksService: TasksService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private tasksService: TasksService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.initializeUsers();
     this.createTaskForm();
+  }
+
+  /**
+   *
+   */
+  initializeUsers(): void {
+    this.userService.getAll().subscribe((response: ServiceResponse<User[]>) => {
+      this.users = response.data;
+    });
   }
 
   /**
@@ -56,6 +74,7 @@ export class ToDoFormComponent {
         [Validators.required]
       ),
       userId: new FormControl(this.taskData ? this.taskData.userId : 0),
+      owner: new FormControl(this.taskData ? this.taskData.userId : 0),
     });
   }
 
