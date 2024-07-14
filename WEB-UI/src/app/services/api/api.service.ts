@@ -25,7 +25,7 @@ export class ApiService {
 
   /**
    * Method responsible to communicate with an external api through post.
-   * @param data contains the data that's being included.
+   * @param data object containing the data that's being included.
    * @param entity defines the object that's being returned.
    * @param apiRoute contains the endpoint that's going to be used.
    * @returns an observable that'll return a ServiceResponse<T> defined by request data.
@@ -50,10 +50,10 @@ export class ApiService {
 
   /**
    * Method responsible to communicate with an external api through put.
-   * @param data contains the data that's being included.
+   * @param data object containing the data that's being modified.
    * @param entity defines the object that's being returned.
-   * @param apiRoute contains the endpoint that's being returned.
-   * @returns an observable that'll return a ServiceResponse<T> defined by
+   * @param apiRoute contains the endpoint that's going to be used.
+   * @returns an observable that'll return a ServiceResponse<T> defined by request data.
    */
   put(
     data: any,
@@ -68,10 +68,10 @@ export class ApiService {
 
   /**
    * Method responsible to communicate with an external api through delete
-   * @param data
-   * @param entity
-   * @param apiRoute
-   * @returns
+   * @param data object containing the data that's being deleted.
+   * @param entity defines the object that's being returned.
+   * @param apiRoute contains the endpoint that's going to be used.
+   * @returns an observable that'll return a ServiceResponse<T> defined by request data.
    */
   delete(
     id: number,

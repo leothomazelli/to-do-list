@@ -149,10 +149,28 @@ namespace WEB_API.Services.UserService
         }
 
         /// <inheritdoc />
-        public ServiceResponse<User> Login(string userName, string password)
+        public ServiceResponse<User> Login(User user)
         {
             var response = new ServiceResponse<User>();
-            throw new NotImplementedException();
+
+            try
+            {
+                response.data = _repository.Query(_ => _.UserName == user.UserName && _.Password == user.Password).FirstOrDefault();
+
+                if (response.data == null)
+                {
+                    throw new Exception("Usuário não foi encontrado.");
+                }
+
+                response.message = "Usuário localizado com sucesso.";
+            }
+            catch (Exception ex)
+            {
+                response.message = ex.Message;
+                response.success = false;
+            }
+
+            return response;
         }
 
         /// <inheritdoc />

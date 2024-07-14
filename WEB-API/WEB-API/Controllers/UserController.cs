@@ -52,9 +52,9 @@ namespace WEB_API.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public ServiceResponse<User> Login(string userName, string password) 
+        public ServiceResponse<User> Login(User user) 
         {
-            return _service.Login(userName, password);
+            return _service.Login(user);
         }
 
         [HttpPost]

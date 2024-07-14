@@ -12,8 +12,8 @@ using WEB_API.DataContext;
 namespace WEB_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240713183400_CreatingGenericData")]
-    partial class CreatingGenericData
+    [Migration("20240714221626_InitializeDatabase")]
+    partial class InitializeDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,27 +55,39 @@ namespace WEB_API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Tasks");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6807),
-                            DueDate = new DateTime(2025, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6807),
-                            Status = 1,
+                            CreatedAt = new DateTime(2024, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(5997),
+                            DueDate = new DateTime(2025, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(5997),
+                            Status = 0,
                             Summary = "Ir ao futebol.",
                             Title = "Futebol",
-                            UserId = 1
+                            UserId = 2
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6811),
-                            DueDate = new DateTime(2025, 7, 13, 15, 34, 0, 375, DateTimeKind.Local).AddTicks(6812),
-                            Status = 0,
+                            CreatedAt = new DateTime(2024, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6001),
+                            DueDate = new DateTime(2025, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6002),
+                            Status = 1,
                             Summary = "Ir ao mercado.",
                             Title = "Mercado",
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedAt = new DateTime(2024, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6004),
+                            DueDate = new DateTime(2025, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6004),
+                            Status = 2,
+                            Summary = "Finalizar o teste.",
+                            Title = "Teste de Programação",
                             UserId = 1
                         });
                 });
@@ -108,17 +120,40 @@ namespace WEB_API.Migrations
                         new
                         {
                             Id = 1,
+                            Email = "admin@gmail.com",
+                            Password = "admin",
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
                             Email = "leonardothomazellif@gmail.com",
                             Password = "123456",
                             UserName = "Leonardo"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 3,
                             Email = "geraneves@gmail.com",
                             Password = "654321",
                             UserName = "Geraldo"
                         });
+                });
+
+            modelBuilder.Entity("WEB_API.Models.Tasks", b =>
+                {
+                    b.HasOne("WEB_API.Models.User", "User")
+                        .WithMany("Tasks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WEB_API.Models.User", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

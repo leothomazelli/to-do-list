@@ -41,10 +41,9 @@ namespace WEB_API.Services.UserService
         /// <summary>
         /// Used to login into the application.
         /// </summary>
-        /// <param name="userName">Property that contains the user's name</param>
-        /// <param name="password">Property that contains the user's password</param>
+        /// <param name="user">The user who's going to be logged by the object received.</param>
         /// <returns>Return a serviceResponse with the result for the operation.</returns>
-        ServiceResponse<User> Login(string userName, string password);
+        ServiceResponse<User> Login(User user);
 
         /// <summary>
         /// Used to logout from the application

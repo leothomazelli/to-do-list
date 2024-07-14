@@ -8,7 +8,7 @@ namespace WEB_API.DataContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
+            ChangeTracker.LazyLoadingEnabled = false;
         }
 
         public DbSet<User> User { get; set; }

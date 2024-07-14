@@ -150,13 +150,13 @@ namespace WEB_API_Tests.Controllers
                 message = "Login realizado com sucesso.",
                 success = true
             };
-            _service.Setup(_ => _.Login(It.IsAny<string>(), It.IsAny<string>())).Returns(responseMock);
+            _service.Setup(_ => _.Login(It.IsAny<User>())).Returns(responseMock);
 
             // Act
-            var result = _controller.Login(userMock.UserName, userMock.Password);
+            var result = _controller.Login(userMock);
 
             // Assert
-            _service.Verify(_ => _.Login(It.IsAny<string>(), It.IsAny<string>()));
+            _service.Verify(_ => _.Login(It.IsAny<User>()));
             Assert.Equal(responseMock, result);
         }
 
