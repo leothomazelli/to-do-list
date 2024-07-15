@@ -15,8 +15,8 @@ export class AddComponent {
   constructor(private tasksService: TasksService, private router: Router) {}
 
   /**
-   *
-   * @param task
+   * Method that adds a task.
+   * @param task is the object that's being added.
    */
   addTask(task: Tasks) {
     this.tasksService.addTask(task).subscribe((response) => {

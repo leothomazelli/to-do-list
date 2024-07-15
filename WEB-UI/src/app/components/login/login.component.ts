@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *
+   * Method that creates the login and its validators.
    */
   createLoginForm() {
     this.formLogin = this.formBuilder.group({
@@ -33,8 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *
-   * @returns
+   * Method responsible for login.
    */
   login() {
     if (this.formLogin == null || this.formLogin?.invalid) {

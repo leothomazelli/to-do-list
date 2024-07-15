@@ -40,23 +40,15 @@ export class ToDoListComponent implements OnInit {
   }
 
   /**
-   *
-   * @param event
+   * Method responsible for drag and drop behavior.
+   * @param event is the task card that's being moved.
    */
   drop(event: CdkDragDrop<Tasks[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
+    if (event.previousContainer != event.container) {
       let task = event.previousContainer.data[event.previousIndex];
       let newStatus = Number(event.container.element.nativeElement.id);
       task.status = newStatus;
-      this.tasksService.editTask(task).subscribe((response) => {
-        // this.router.navigate(['/']);
-      });
+      this.tasksService.editTask(task).subscribe();
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -67,9 +59,9 @@ export class ToDoListComponent implements OnInit {
   }
 
   /**
-   *
-   * @param status
-   * @returns
+   * Method is responsible of filtering the tasks.
+   * @param status is the StatusEnum object.
+   * @returns filtered task object.
    */
   private getFilteredTasks(status: StatusEnum): Tasks[] {
     return this._tasks.filter((task: Tasks) => task.status === status);

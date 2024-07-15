@@ -22,9 +22,6 @@ export class ToDoFormComponent {
   taskForm!: FormGroup;
   users: User[] = [];
 
-  /**
-   *
-   */
   constructor(
     private userService: UserService,
     private tasksService: TasksService,
@@ -37,7 +34,7 @@ export class ToDoFormComponent {
   }
 
   /**
-   *
+   * Method responsible for initializing the user data.
    */
   initializeUsers(): void {
     this.userService.getAll().subscribe((response: ServiceResponse<User[]>) => {
@@ -46,7 +43,7 @@ export class ToDoFormComponent {
   }
 
   /**
-   *
+   * Method that creates the task form and its validators.
    */
   createTaskForm() {
     this.taskForm = new FormGroup({
@@ -77,17 +74,26 @@ export class ToDoFormComponent {
     });
   }
 
+  /**
+   * Method responsible for emitting the task form values.
+   * @param task is the object containing the task.
+   */
   submit(task: Tasks) {
     this.onSubmit.emit(this.taskForm.value);
   }
 
-  delete() {
+  /**
+   * Method that will delete a task.
+   * @returns a message with the result of the operation.
+   */
+  deleteTask() {
     if (this.taskData == null) {
       return;
     }
 
     this.tasksService.deleteTask(this.taskData.id).subscribe((response) => {
       this.router.navigate(['/']);
+      alert(response.message);
     });
   }
 }

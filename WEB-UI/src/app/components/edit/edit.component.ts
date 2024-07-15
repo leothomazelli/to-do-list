@@ -14,9 +14,6 @@ export class EditComponent implements OnInit {
   title: string = 'Edit Task';
   taskData: Tasks | null = null;
 
-  /**
-   *
-   */
   constructor(
     private tasksService: TasksService,
     private activatedRoute: ActivatedRoute,
@@ -28,7 +25,7 @@ export class EditComponent implements OnInit {
   }
 
   /**
-   *
+   * Method responsible for initializing the task data.
    */
   initializeTaskData() {
     this.tasksService
@@ -39,8 +36,8 @@ export class EditComponent implements OnInit {
   }
 
   /**
-   *
-   * @param task
+   * Method that edits the task provided.
+   * @param task is the Task object that's being edited.
    */
   editTask(task: Tasks) {
     this.tasksService.editTask(task).subscribe((response) => {

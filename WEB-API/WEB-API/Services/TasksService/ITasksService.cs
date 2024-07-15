@@ -34,7 +34,7 @@ namespace WEB_API.Services.TasksService
         /// <summary>
         /// Get a task based on the id received.
         /// </summary>
-        /// <param name="id">The task which the id is going to return.</param>
+        /// <param name="id">The id from the task that's being returned.</param>
         /// <returns>Return a serviceResponse with the result for the operation.</returns>
         ServiceResponse<Tasks> GetTaskById(int id);
     }

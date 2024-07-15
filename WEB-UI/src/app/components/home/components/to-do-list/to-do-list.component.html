@@ -1,6 +1,5 @@
-<div class="container">
+<div class="container to-do">
   <h2>To do</h2>
-
   <div
     id="0"
     cdkDropList
@@ -21,9 +20,8 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container doing">
   <h2>Doing</h2>
-
   <div
     id="1"
     cdkDropList
@@ -44,9 +42,8 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container done">
   <h2>Done</h2>
-
   <div
     id="2"
     cdkDropList
@@ -68,5 +65,5 @@
 </div>
 
 <div class="text-end">
-  <button class="btn btn-success mt-2" [routerLink]="['/add']">Novo</button>
+  <button class="btn btn-success mt-2" [routerLink]="['/add']">New Task</button>
 </div>

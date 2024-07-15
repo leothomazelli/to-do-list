@@ -10,8 +10,7 @@ export class HomeComponent {
   constructor(private userService: UserService) {}
 
   /**
-   *
-   * @returns
+   * Method that will logout the user, disabling his authentication to travel through URLs, needing to log back in again.
    */
   logout(): void {
     this.userService.logout();
