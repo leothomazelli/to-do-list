@@ -61,6 +61,7 @@ export class TasksService {
    * @returns
    */
   private normalizeData(data: Tasks): Tasks {
+    data.userId = Number(data.userId);
     data.status = Number(data.status);
     data.createdAt = <Date>(
       (this.datePipe.transform(data.createdAt, 'yyyy-MM-dd') as any)

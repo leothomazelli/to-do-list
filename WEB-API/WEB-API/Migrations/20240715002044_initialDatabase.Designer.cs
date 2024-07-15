@@ -12,8 +12,8 @@ using WEB_API.DataContext;
 namespace WEB_API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240714221626_InitializeDatabase")]
-    partial class InitializeDatabase
+    [Migration("20240715002044_initialDatabase")]
+    partial class initialDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,16 +55,14 @@ namespace WEB_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Tasks");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(5997),
-                            DueDate = new DateTime(2025, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(5997),
+                            CreatedAt = new DateTime(2024, 7, 14, 21, 20, 44, 235, DateTimeKind.Local).AddTicks(6402),
+                            DueDate = new DateTime(2025, 7, 14, 21, 20, 44, 235, DateTimeKind.Local).AddTicks(6403),
                             Status = 0,
                             Summary = "Ir ao futebol.",
                             Title = "Futebol",
@@ -73,8 +71,8 @@ namespace WEB_API.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6001),
-                            DueDate = new DateTime(2025, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6002),
+                            CreatedAt = new DateTime(2024, 7, 14, 21, 20, 44, 235, DateTimeKind.Local).AddTicks(6407),
+                            DueDate = new DateTime(2025, 7, 14, 21, 20, 44, 235, DateTimeKind.Local).AddTicks(6407),
                             Status = 1,
                             Summary = "Ir ao mercado.",
                             Title = "Mercado",
@@ -83,8 +81,8 @@ namespace WEB_API.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2024, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6004),
-                            DueDate = new DateTime(2025, 7, 14, 19, 16, 26, 313, DateTimeKind.Local).AddTicks(6004),
+                            CreatedAt = new DateTime(2024, 7, 14, 21, 20, 44, 235, DateTimeKind.Local).AddTicks(6409),
+                            DueDate = new DateTime(2025, 7, 14, 21, 20, 44, 235, DateTimeKind.Local).AddTicks(6409),
                             Status = 2,
                             Summary = "Finalizar o teste.",
                             Title = "Teste de Programação",
@@ -138,22 +136,6 @@ namespace WEB_API.Migrations
                             Password = "654321",
                             UserName = "Geraldo"
                         });
-                });
-
-            modelBuilder.Entity("WEB_API.Models.Tasks", b =>
-                {
-                    b.HasOne("WEB_API.Models.User", "User")
-                        .WithMany("Tasks")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("WEB_API.Models.User", b =>
-                {
-                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

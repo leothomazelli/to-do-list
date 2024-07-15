@@ -19,9 +19,7 @@ namespace WEB_API.Models
 
         public DateTime DueDate { get; set; }
 
+        [ForeignKey("User")]
         public int UserId { get; set; }
-
-        [ForeignKey("UserId")]
-        public virtual User User { get; set; }
     }
 }

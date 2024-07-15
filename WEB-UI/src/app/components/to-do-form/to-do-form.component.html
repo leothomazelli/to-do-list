@@ -51,21 +51,12 @@
     />
   </div>
   <div class="form-group">
-    <label for="owner">Owner</label>
-    <select class="form-select" id="owner" formControlName="owner" required>
+    <label for="userId">Owner</label>
+    <select class="form-select" id="userId" formControlName="userId" required>
       <option *ngFor="let user of users" value="{{ user.id }}">
         {{ user.userName }}
       </option>
     </select>
-  </div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="text"
-      formControlName="userId"
-      placeholder="Title"
-      hidden
-    />
   </div>
   <div class="btn-box text-end mt-2">
     <button

@@ -12,7 +12,6 @@ namespace WEB_API.Services.TasksService
         /// Repository object created to access the Task registers on database using EntityFramework.
         /// </summary>
         private readonly IRepository<Tasks> _repository;
-        private readonly IRepository<User> _userRepository;
 
         #endregion Properties
 
@@ -22,10 +21,8 @@ namespace WEB_API.Services.TasksService
         /// Tasks constructor created to initialize the "_repository" using Dependency Injection.
         /// </summary>
         /// <param name="repository">IRepository<Tasks> object used to initialize the internal variable using Dependency Injection.</param>
-        public TasksService(IRepository<Tasks> repository, IRepository<User> userRepository)
-        {
+        public TasksService(IRepository<Tasks> repository)        {
             _repository = repository;
-            _userRepository = userRepository;
         }
 
 
@@ -141,7 +138,6 @@ namespace WEB_API.Services.TasksService
                     throw new Exception("Task não foi encontrada.");
                 }
 
-                response.data.User = _userRepository.GetById(response.data.UserId);
                 response.message = "Task localizada com sucesso.";
             }
             catch (Exception ex)

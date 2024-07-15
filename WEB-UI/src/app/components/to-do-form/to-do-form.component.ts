@@ -74,7 +74,6 @@ export class ToDoFormComponent {
         [Validators.required]
       ),
       userId: new FormControl(this.taskData ? this.taskData.userId : 0),
-      owner: new FormControl(this.taskData ? this.taskData.userId : 0),
     });
   }
 
